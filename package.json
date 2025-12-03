@@ -1,15 +1,30 @@
 {
-  "name": "opds-feed-parser",
-  "version": "0.1.0",
-  "description": "OPDS feed parser",
-  "author": "NYPL",
+  "name": "@natlibfi/ekirjasto-opds-feed-parser",
+  "description": "E-kirjasto OPDS feed parser",
+  "version": "1.0.0",
+  "author": {
+    "name": "The National Library of Finland"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+		"opds",
+    "parser",
+		"natlibfi",
+		"ekirjasto"
+	],
+  "homepage": "https://github.com/NatLibFi/ekirjasto-opds-feed-parser",
   "repository": {
     "type": "git",
-    "url": "git@github.com:NYPL-Simplified/opds-feed-parser.git"
+    "url": "git@github.com:NatLibFi/ekirjasto-opds-feed-parser.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NatLibFi/ekirjasto-opds-feed-parser/issues"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "main": "lib/src/index.js",
   "typings": "lib/src/index.d.ts",
-  "license": "Apache-2.0",
   "scripts": {
     "prepublish": "rm -rf lib; tsc",
     "lint": "tslint -c tslint.json src/*.ts test/*.ts",

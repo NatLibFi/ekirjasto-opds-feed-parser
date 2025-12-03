@@ -1,40 +1,47 @@
-# opds-feed-parser
+# E-kirjasto OPDS feed parser
 
-Javascript OPDS feed parser. Covers [OPDS 1.1](http://opds-spec.org/specs/opds-catalog-1-1-20110627/).
+Javascript OPDS feed parser.
 
+The National Library of Finland's fork of the [NYPL-Simplified/opds-feed-parser](https://github.com/NYPL-Simplified/opds-feed-parser).
+
+Covers [OPDS 1.1 version](http://opds-spec.org/specs/opds-catalog-1-1-20110627/) and E-kirjasto specific additions and modifications.
 
 ## Usage
 
 ```sh
-npm install opds-feed-parser
+npm install ekirjasto-opds-feed-parser
 ```
 
 Example:
-```js
-var Parser = require("opds-feed-parser").default;
-var request = require("request");
 
-var parser = new Parser();
-request("http://feedbooks.github.io/opds-test-catalog/catalog/acquisition/blocks.xml", (error, response, body) => {
-    var promise = parser.parse(body);
-    promise.then((result) => {
-        console.dir(result);
-    });
+```js
+import OPDSParser, { OPDSFeed, OPDSEntry } from "ekirjasto-opds-feed-parser";
+
+const parser = new OPDSParser();
+
+async function fetchOPDS(url: string): Promise<OPDSEntry | OPDSFeed> {
+  const response = await fetch(url);
+  const text = await response.text();
+  
+  try {
+      // parse the text into an opds feed or entry
+      return await parser.parse(text);
+  } catch (error) {
+      // handle error
+  }
+}
 ```
 
 ## Setup
 
-Version `0.1.0` requires Node 20 or higher.
-
-The previous working version, `0.0.18` can be used with Node version < 18.
+Requires Node 20 or higher.
 
 It is recommended to use [`nvm`](https://github.com/nvm-sh/nvm) to install different versions of Node needed on your machine.
 
-
 ## License
 
-```
-Copyright © 2015 The New York Public Library, Astor, Lenox, and Tilden Foundations
+```text
+Copyright © 2025 The New York Public Library, Astor, Lenox, Tilden Foundations and The National Library of Finland (Kansalliskirjasto)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

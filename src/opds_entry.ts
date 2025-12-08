@@ -1,3 +1,4 @@
+import Accessibility from "./accessibility";
 import OPDSLink from "./opds_link";
 import Contributor from "./contributor";
 import Series from "./series";
@@ -6,6 +7,7 @@ import Summary from "./summary";
 
 export default class OPDSEntry {
   id: string;
+  accessibility: Accessibility;
   updated: string;
   title: string;
   authors: Array<Contributor>;

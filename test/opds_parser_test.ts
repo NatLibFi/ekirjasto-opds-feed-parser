@@ -106,6 +106,8 @@ describe("OPDSParser", () => {
             expect(result.entries[0].categories.length).to.equals(2);
             expect(result.entries[0].categories[0].term).to.equals("FBFIC000000");
             expect(result.entries[0].categories[0].label).to.equals("Fiction");
+            expect(result.entries[0].accessibility.waysOfReading.features).to.contain("Appearance can be modified");
+            expect(result.entries[0].accessibility.conformance.conformsTo).to.equals("This publication meets accepted accessibility standards");
 
             expect(result.entries[0].links.length).to.equals(4);
             expect(result.entries[0].links[0]).to.be.an.instanceof(OPDSAcquisitionLink);
@@ -139,6 +141,10 @@ describe("OPDSParser", () => {
 
             expect(result.categories.length).to.equals(4);
             expect(result.language).to.equals("en");
+
+            expect(result.accessibility.waysOfReading.features).to.contain("Appearance can be modified");
+            expect(result.accessibility.conformance.conformsTo).to.equals("This publication meets accepted accessibility standards");
+
           }).then(done, done);
         }
       });

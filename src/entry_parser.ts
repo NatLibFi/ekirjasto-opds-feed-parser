@@ -1,3 +1,4 @@
+import AccessibilityParser from "./accessibility_parser";
 import OPDSEntry from "./opds_entry";
 import PartialOPDSEntry from "./partial_opds_entry";
 import CompleteEntryLink from "./complete_entry_link";
@@ -17,6 +18,14 @@ export default class EntryParser extends Xml2jsOutputParser<OPDSEntry> {
     let schemaPrefix = this.prefixes[NamespaceParser.SCHEMA_URI];
 
     let id = this.parseSubtagContent(entry, atomPrefix + "id");
+
+    const accessibilityParser = new AccessibilityParser(this.prefixes);
+    const accessibility = this.parseSubtag(
+      entry,
+      atomPrefix + "accessibility",
+      accessibilityParser
+    );
+
     let updated = this.parseSubtagContent(entry, atomPrefix + "updated");
     let title = this.parseSubtagContent(entry, atomPrefix + "title");
 
@@ -74,6 +83,7 @@ export default class EntryParser extends Xml2jsOutputParser<OPDSEntry> {
 
     return new entryClass({
        id,
+       accessibility,
        updated,
        title,
        authors,

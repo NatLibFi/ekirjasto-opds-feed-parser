@@ -1,0 +1,13 @@
+<entry xmlns:bibframe="http://bibframe.org/vocab/" xmlns:simplified="http://librarysimplified.org/terms/" xmlns:app="http://www.w3.org/2007/app" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:opds="http://opds-spec.org/2010/catalog" xmlns:schema="http://schema.org/" xmlns="http://www.w3.org/2005/Atom" schema:additionalType="http://schema.org/Book">
+  <title>Accessibility XML test</title>
+  <accessibility>
+    <waysOfReading>
+      <feature>Appearance can be modified</feature>
+      <feature>Has alternative text</feature>
+      <feature>Not fully readable in read aloud or dynamic braille</feature>
+    </waysOfReading>
+    <conformance>
+      <conformsTo>This publication meets accepted accessibility standards</conformsTo>
+    </conformance>
+  </accessibility>
+</entry>

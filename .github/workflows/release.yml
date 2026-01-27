@@ -1,36 +1,102 @@
-name: Publish Release
+name: npm Publish
 
 on:
-  # The build will be triggered when we publish a release
+  push:
+    branches:
+      - main
   release:
     types: [published]
+  workflow_call:
+    inputs:
+      version-source:
+        description: "Set to 'dunamai' to compute from git, or 'release-tag' to use a provided tag."
+        required: true
+        type: string
+      release-tag:
+        description: "Release tag to use when version-source is release-tag."
+        required: false
+        type: string
+      publish-tag:
+        description: "npm dist-tag to publish with."
+        required: false
+        type: string
+        default: latest
+
+concurrency:
+  group: npm-publish-${{ github.ref_name }}-${{ github.event_name }}
+  cancel-in-progress: true
+
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
 
 jobs:
-  release:
+  npm-publish:
     runs-on: ubuntu-latest
-
     steps:
+      - name: Resolve publish parameters (push)
+        if: github.event_name == 'push'
+        run: |
+          echo "VERSION_SOURCE=dunamai" >> "$GITHUB_ENV"
+          echo "PUBLISH_TAG=next" >> "$GITHUB_ENV"
 
-    - uses: actions/checkout@v3
+      - name: Resolve publish parameters (release)
+        if: github.event_name == 'release'
+        run: |
+          echo "VERSION_SOURCE=release-tag" >> "$GITHUB_ENV"
+          echo "RELEASE_TAG=${{ github.event.release.tag_name }}" >> "$GITHUB_ENV"
+          echo "PUBLISH_TAG=latest" >> "$GITHUB_ENV"
 
-    - name: Install Node.js 💻
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18
-        registry-url: https://registry.npmjs.org/
+      - name: Resolve publish parameters (workflow_call)
+        if: github.event_name == 'workflow_call'
+        run: |
+          echo "VERSION_SOURCE=${{ inputs.version-source }}" >> "$GITHUB_ENV"
+          echo "RELEASE_TAG=${{ inputs.release-tag }}" >> "$GITHUB_ENV"
+          echo "PUBLISH_TAG=${{ inputs.publish-tag }}" >> "$GITHUB_ENV"
 
-    - name: Install locked dependencies 🔧
-      run: npm ci
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
 
-    - name: Version ✅
-      run: npm version --no-git-tag-version ${{ github.event.release.tag_name }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.17
+          registry-url: https://registry.npmjs.org/
+          cache: npm
 
-    - name: Test 🧪
-      env:
-        TZ: Europe/Helsinki
-      run: npm test
+      - name: Upgrade npm (trusted publishing requirement) ⬆️
+        run: npm install -g npm@^11.5.1
 
-    - name: Publish 📚
-      run: npm publish --access public
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Set up Python 🐍
+        if: ${{ github.event_name == 'push' || (github.event_name == 'workflow_call' && inputs.version-source == 'dunamai') }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Set up Dunamai 🪄
+        if: ${{ github.event_name == 'push' || (github.event_name == 'workflow_call' && inputs.version-source == 'dunamai') }}
+        run: pip install -r requirements-ci.txt
+
+      - name: Install locked dependencies 🔧
+        run: npm ci
+
+      - name: Version ✅
+        run: |
+          if [ "${VERSION_SOURCE}" = "dunamai" ]; then
+            npm version --no-git-tag-version $(dunamai from git --style semver)
+          else
+            if [ -z "${RELEASE_TAG}" ]; then
+              echo "release-tag input is required when version-source is not 'dunamai'." 1>&2
+              exit 1
+            fi
+            npm version --no-git-tag-version "${RELEASE_TAG}"
+          fi
+
+      - name: Test 🧪
+        env:
+          TZ: Europe/Helsinki
+        run: npm test
+
+      - name: Publish 📚 (OIDC Trusted Publishing)
+        run: npm publish --tag "${PUBLISH_TAG}" --access public --provenance

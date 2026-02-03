@@ -7,15 +7,15 @@
   },
   "license": "Apache-2.0",
   "keywords": [
-		"opds",
+    "opds",
     "parser",
-		"natlibfi",
-		"ekirjasto"
-	],
+    "natlibfi",
+    "ekirjasto"
+  ],
   "homepage": "https://github.com/NatLibFi/ekirjasto-opds-feed-parser",
   "repository": {
     "type": "git",
-    "url": "git@github.com:NatLibFi/ekirjasto-opds-feed-parser.git"
+    "url": "git+ssh://git@github.com/NatLibFi/ekirjasto-opds-feed-parser.git"
   },
   "bugs": {
     "url": "https://github.com/NatLibFi/ekirjasto-opds-feed-parser/issues"

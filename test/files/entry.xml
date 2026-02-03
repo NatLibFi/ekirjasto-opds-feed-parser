@@ -3,6 +3,16 @@
 <title>The Frances Hodgson Burnett Megapack</title>
 <bibframe:distribution bibframe:ProviderName="Overdrive"/>
 <author><name>Frances Hodgson Burnett</name></author>
+<accessibility>
+<waysOfReading>
+<feature>Appearance can be modified</feature>
+<feature>Has alternative text</feature>
+<feature>Not fully readable in read aloud or dynamic braille</feature>
+</waysOfReading>
+<conformance>
+<conformsTo>This publication meets accepted accessibility standards</conformsTo>
+</conformance>
+</accessibility>
 <summary type="html">&lt;p&gt;The Frances Hodgson Burnett Megapack collects 40 classic works by the author of &lt;i&gt;Little Lord Fauntleroy, A Little Princess&lt;/i&gt;, and &lt;i&gt;The Secret Garden&lt;/i&gt;. Almost 5,000 pages of great reading!&lt;p&gt;THE SECRET GARDEN&lt;p&gt;LITTLE LORD FAUNTLEROY&lt;p&gt;A LITTLE PRINCESS&lt;p&gt;THE LOST PRINCE&lt;p&gt;A LADY OF QUALITY&lt;p&gt;HIS GRACE OF OSMONDE&lt;p&gt;THE LAND OF THE BLUE FLOWER&lt;p&gt;THE LITTLE HUNCHBACK ZIA&lt;p&gt;LITTLE SAINT ELIZABETH&lt;p&gt;THE STORY OF PRINCE FAIRYFOOT&lt;p&gt;THE PROUD LITTLE GRAIN OF WHEAT&lt;p&gt;BEHIND THE WHITE BRICK&lt;p&gt;LODUSKY&lt;p&gt;M&#200;RE GIRAUDS LITTLE DAUGHTER&lt;p&gt;"LE MONSIEUR DE LA PETITE DAME"&lt;p&gt;MY ROBIN&lt;p&gt;ONE DAY AT ARLE&lt;p&gt;THE PRETTY SISTER OF JOS&#201;&lt;p&gt;RACKETTY-PACKETTY HOUSE&lt;p&gt;SARA CREWE&lt;p&gt;SETH&lt;p&gt;THE SHUTTLE&lt;p&gt;SURLY TIM&lt;p&gt;THAT LASS O' LOWRIE'S&lt;p&gt;THEO&lt;p&gt;T. TEMBAROM&lt;p&gt;VAGABONDIA&lt;p&gt;THE WHITE PEOPLE&lt;p&gt;LOUISIANA&lt;p&gt;THE GOOD WOLF&lt;p&gt;BARTY CRUSOE AND HIS MAN SATURDAY&lt;p&gt;THE COZY LION&lt;p&gt;THE DAWN OF A TOMORROW&lt;p&gt;EMILY FOX-SETON&lt;p&gt;ESMERALDA&lt;p&gt;A FAIR BARBARIAN&lt;p&gt;THE HEAD OF THE HOUSE OF COOMBE&lt;p&gt;ROBIN&lt;p&gt;IN CONNECTION WITH THE DE WILLOUGHBY CLAIM&lt;p&gt;IN THE CLOSED ROOM&lt;p&gt;If you enjoy this volume, don't forget to search your favorite ebook store for "Wildside Megapack" to see the 100+ entries in this best-selling series, including volumes of science fiction, fantasy, mystery, westerns, classics, young adult books, and much, much more! (Sort by publication date to see the most recent entries.)</summary>
 <updated>2016-01-08T21:38:19Z</updated>
 <simplified:pwid>500010e3-884f-58d1-2cca-b56429de23fb</simplified:pwid>

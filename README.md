@@ -9,7 +9,7 @@ Covers [OPDS 1.1 version](http://opds-spec.org/specs/opds-catalog-1-1-20110627/)
 ## Usage
 
 ```sh
-npm install ekirjasto-opds-feed-parser
+npm install @natlibfi/ekirjasto-opds-feed-parser
 ```
 
 Example:

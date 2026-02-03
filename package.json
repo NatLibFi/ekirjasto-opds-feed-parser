@@ -7,26 +7,30 @@
   },
   "license": "Apache-2.0",
   "keywords": [
-		"opds",
+    "opds",
     "parser",
-		"natlibfi",
-		"ekirjasto"
-	],
+    "natlibfi",
+    "ekirjasto"
+  ],
   "homepage": "https://github.com/NatLibFi/ekirjasto-opds-feed-parser",
   "repository": {
     "type": "git",
-    "url": "git@github.com:NatLibFi/ekirjasto-opds-feed-parser.git"
-  },
-  "bugs": {
-    "url": "https://github.com/NatLibFi/ekirjasto-opds-feed-parser/issues"
+    "url": "git+ssh://git@github.com/NatLibFi/ekirjasto-opds-feed-parser.git"
   },
   "engines": {
     "node": ">=20"
   },
   "main": "lib/src/index.js",
   "typings": "lib/src/index.d.ts",
+  "files": [
+    "lib/src/**/*",
+    "CHANGELOG",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
-    "prepublish": "rm -rf lib; tsc",
+    "prepare": "rm -rf lib && tsc",
+    "prepublishOnly": "npm test",
     "lint": "tslint -c tslint.json src/*.ts test/*.ts",
     "test": "rm -rf lib && npm run lint && tsc && mocha lib/test/*.js"
   },

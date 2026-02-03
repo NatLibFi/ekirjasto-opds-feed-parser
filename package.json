@@ -25,8 +25,15 @@
   },
   "main": "lib/src/index.js",
   "typings": "lib/src/index.d.ts",
+  "files": [
+    "lib/src/**/*",
+    "CHANGELOG",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
-    "prepublish": "rm -rf lib; tsc",
+    "prepare": "rm -rf lib && tsc",
+    "prepublishOnly": "npm test",
     "lint": "tslint -c tslint.json src/*.ts test/*.ts",
     "test": "rm -rf lib && npm run lint && tsc && mocha lib/test/*.js"
   },

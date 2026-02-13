@@ -1,3 +1,4 @@
+import LCPPassphrases from "./lcp_passphrases";
 import OPDSAvailability from "./opds_availability";
 import OPDSCopies from "./opds_copies";
 import OPDSHolds from "./opds_holds";
@@ -11,7 +12,7 @@ export default class OPDSAcquisitionLink extends OPDSLink {
 
   // base URL for the acquisition links
   static BASE_REL = "http://opds-spec.org/acquisition";
-  
+
   // generic relation URL for acquisition
   static GENERIC_REL = OPDSAcquisitionLink.BASE_REL;
 
@@ -37,6 +38,7 @@ export default class OPDSAcquisitionLink extends OPDSLink {
   copies: OPDSCopies;
   holds: OPDSHolds;
   indirectAcquisitions: OPDSIndirectAcquisition[];
+  passphrases: LCPPassphrases;
   prices: OPDSPrice[];
 
   // inits the OPDSAcquisitionLink with given arguments
@@ -46,12 +48,13 @@ export default class OPDSAcquisitionLink extends OPDSLink {
 }
 
 // define interface for OPDSAcquisitionLink, which
-// extends the normal properties of OPDSLinkArgs 
+// extends the normal properties of OPDSLinkArgs
 // to include additional fields
 export interface OPDSAcquisitionLinkArgs extends OPDSLinkArgs {
   availability: OPDSAvailability;
   copies: OPDSCopies;
   holds: OPDSHolds;
   indirectAcquisitions: OPDSIndirectAcquisition[];
+  passphrases: LCPPassphrases;
   prices: OPDSPrice[];
 }

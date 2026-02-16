@@ -8,6 +8,7 @@ import IndirectAcquisitionParser from "./indirect_acquisition_parser";
 import AvailabilityParser from "./availability_parser";
 import HoldsParser from "./holds_parser";
 import CopiesParser from "./copies_parser";
+import PassphrasesParser from "./passphrases_parser";
 import OPDSArtworkLink from "./opds_artwork_link";
 import AlternateLink from "./alternate_link";
 import CompleteEntryLink from "./complete_entry_link";
@@ -51,10 +52,12 @@ export default class LinkParser extends Xml2jsOutputParser<OPDSLink> {
       let holds = this.parseSubtag(link, opdsPrefix + "holds", holdsParser);
       let copiesParser = new CopiesParser(this.prefixes);
       let copies = this.parseSubtag(link, opdsPrefix + "copies", copiesParser);
+      let passphrasesParser = new PassphrasesParser(this.prefixes);
+      let passphrases = passphrasesParser.parse(link);
 
       return new OPDSAcquisitionLink({
         href, rel, type, title, prices, indirectAcquisitions,
-        availability, holds, copies
+        availability, holds, copies, passphrases
       });
     } else if (rel === AlternateLink.REL) {
       if (type === CompleteEntryLink.TYPE) {

@@ -1,20 +1,22 @@
-import PrefixMap from "../src/prefix_map";
+import AlternateLink from "../src/alternate_link";
+import AvailabilityParser from "../src/availability_parser";
+import chai = require("chai");
+import CompleteEntryLink from "../src/complete_entry_link";
+import CopiesParser from "../src/copies_parser";
+import HoldsParser from "../src/holds_parser";
 import LinkParser from "../src/link_parser";
 import NamespaceParser from "../src/namespace_parser";
-import OPDSCatalogRootLink from "../src/opds_catalog_root_link";
-import OPDSFacetLink from "../src/opds_facet_link";
-import SearchLink from "../src/search_link";
-import AlternateLink from "../src/alternate_link";
-import CompleteEntryLink from "../src/complete_entry_link";
 import OPDSAcquisitionLink from "../src/opds_acquisition_link";
 import OPDSArtworkLink from "../src/opds_artwork_link";
-import OPDSCrawlableLink from "../src/opds_crawlable_link";
+import OPDSCatalogRootLink from "../src/opds_catalog_root_link";
 import OPDSCollectionLink from "../src/opds_collection_link";
+import OPDSCrawlableLink from "../src/opds_crawlable_link";
+import OPDSFacetLink from "../src/opds_facet_link";
 import OPDSShelfLink from "../src/opds_shelf_link";
-import AvailabilityParser from "../src/availability_parser";
-import HoldsParser from "../src/holds_parser";
-import CopiesParser from "../src/copies_parser";
-import chai = require("chai");
+import PassphrasesParser from "../src/passphrases_parser";
+import PrefixMap from "../src/prefix_map";
+import SearchLink from "../src/search_link";
+
 let expect = chai.expect;
 
 describe("LinkParser", () => {
@@ -23,6 +25,7 @@ describe("LinkParser", () => {
 
   beforeEach(() => {
     prefixes = {
+      [NamespaceParser.LCP_URI]: "lcp:",
       [NamespaceParser.OPDS_URI]: "opds:",
       [NamespaceParser.THR_URI]: "thr:"
     };
@@ -192,7 +195,7 @@ describe("LinkParser", () => {
       expect(castParsedLink.indirectAcquisitions[1].indirectAcquisitions[0].type).to.equals(type4);
     });
 
-    it("extracts availability, holds, copies for acquisition link", () => {
+    it("extracts availability, holds, copies and passphrases for acquisition link", () => {
       let link = {
         $: {
           href: { value: "test href" },
@@ -221,20 +224,41 @@ describe("LinkParser", () => {
               available: { value: "0" }
             }
           }
+        ],
+        "lcp:hashed_passphrase": [
+          {"_": "5e884898da28047151d0e56f8dc6292773603d0d"}
+        ],
+        "lcp:unhashed_passphrase": [
+            {"_": "SecretPassphrase"}
         ]
       };
+
       let parsedLink = parser.parse(link);
+
       expect(parsedLink).to.be.an.instanceof(OPDSAcquisitionLink);
+
       let castParsedLink = <OPDSAcquisitionLink>parsedLink;
+
       expect(castParsedLink.availability).to.deep.equal(
         new AvailabilityParser(prefixes).parse(link["opds:availability"][0])
       );
+
       expect(castParsedLink.holds).to.deep.equal(
         new HoldsParser(prefixes).parse(link["opds:holds"][0])
       );
+
       expect(castParsedLink.copies).to.deep.equal(
         new CopiesParser(prefixes).parse(link["opds:copies"][0])
       );
+
+      expect(castParsedLink.passphrases.hashedPassphrase).to.deep.equal(
+        new PassphrasesParser(prefixes).parse(link).hashedPassphrase
+      );
+
+      expect(castParsedLink.passphrases.unhashedPassphrase).to.deep.equal(
+        new PassphrasesParser(prefixes).parse(link).unhashedPassphrase
+      );
+
     });
 
     it("extracts artwork link", () => {

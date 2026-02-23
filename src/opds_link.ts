@@ -1,3 +1,5 @@
+// define class that represents OPDS links
+// (links used in OPDS standard)
 export default class OPDSLink {
   href: string;
   rel: string;
@@ -6,10 +8,15 @@ export default class OPDSLink {
   role: string;
 
   constructor(args: OPDSLinkArgs) {
+    // copy the arguments given as parameter
+    //  to class properties
     Object.assign(this, args);
   }
 }
 
+// interface that defines
+// the arguments for the OPDSLink class.
+// Only href is required.
 export interface OPDSLinkArgs {
   href: string;
   type?: string;

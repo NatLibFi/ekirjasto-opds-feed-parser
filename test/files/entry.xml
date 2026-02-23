@@ -1,4 +1,4 @@
-<entry xmlns:bibframe="http://bibframe.org/vocab/" xmlns:simplified="http://librarysimplified.org/terms/" xmlns:app="http://www.w3.org/2007/app" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:opds="http://opds-spec.org/2010/catalog" xmlns:schema="http://schema.org/" xmlns="http://www.w3.org/2005/Atom" schema:additionalType="http://schema.org/Book">
+<entry xmlns:bibframe="http://bibframe.org/vocab/" xmlns:simplified="http://librarysimplified.org/terms/" xmlns:app="http://www.w3.org/2007/app" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:opds="http://opds-spec.org/2010/catalog" xmlns:schema="http://schema.org/" xmlns="http://www.w3.org/2005/Atom" xmlns:lcp="http://readium.org/lcp-specs/ns" schema:additionalType="http://schema.org/Book">
 <id>urn:librarysimplified.org/terms/id/Overdrive%20ID/135d0478-1ab9-4cc1-a1aa-2aa616b1218c</id>
 <title>The Frances Hodgson Burnett Megapack</title>
 <bibframe:distribution bibframe:ProviderName="Overdrive"/>
@@ -39,5 +39,7 @@
 <opds:availability status="available"/>
 <opds:holds total="0"/>
 <opds:copies available="1" total="1"/>
+<lcp:hashed_passphrase>5e884898da28047151d0e56f8dc6292773603d0d</lcp:hashed_passphrase>
+<lcp:unhashed_passphrase>SecretPassphrase</lcp:unhashed_passphrase>
 </link>
 </entry>

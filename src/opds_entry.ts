@@ -22,6 +22,7 @@ export default class OPDSEntry {
   rights: string;
   publisher: string;
   published: string;
+  duration?: number; // Audiobook duration in seconds
   summary: Summary;
   unparsed: any;
 

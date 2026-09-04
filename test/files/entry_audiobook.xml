@@ -1,0 +1,51 @@
+<entry xmlns="http://www.w3.org/2005/Atom"
+    xmlns:app="http://www.w3.org/2007/app"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:opds="http://opds-spec.org/2010/catalog"
+    xmlns:opf="http://www.idpf.org/2007/opf"
+    xmlns:drm="http://librarysimplified.org/terms/drm"
+    xmlns:schema="http://schema.org/"
+    xmlns:simplified="http://librarysimplified.org/terms/"
+    xmlns:bibframe="http://bibframe.org/vocab/"
+    xmlns:bib="http://bib.schema.org/"
+    xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/"
+    xmlns:lcp="http://readium.org/lcp-specs/ns" schema:additionalType="http://bib.schema.org/Audiobook">
+    <title>Äänenkantama</title>
+    <dcterms:duration>16166.0</dcterms:duration>
+    <summary>Sanni haluaisi vain nukkua, mutta sitä hänelle ei suoda. On pienet lapset, hieno ura ja työhönsä uponnut aviomies ja vastuuta ihan julmetusti.  Sanni pyörittää lapsiperhearkea lähinnä yksin. Hoida työ, lasten lääkäriajat, psykologit, kaverisynttärit, vie päiväkotiin, hae kotiin, kokkaa, siivoa, pue, riisu, herätä, nukuta. Valvo yöt. Kyllä normaali ihminen jaksaa, jaksaahan?  Kun Sanni romahtaa, hän putoaa korkealta. Sairaalassa hän kasaa palasiaan, kunnes tapahtuu jotain, joka saattaa muuttaa koko loppuelämän suunnan.  Kiitetyn novellistin ensimmäinen romaani on suora ja koskettava kertomus uupuneesta perheenäidistä, joka on niin korviaan myöten suorittamisen suossa, ettei tiedä, missä välissä ehtisi rakastaa. Mitä jää, kun kuva omasta menneisyydestä, nykyisyydestä ja tulevaisuudesta hajoaa?  Äänenkantama on taiturimaisesti kirjoitettu, paljas ja toiveikas kirja siitä, miten kauas itsestään voi kulkea, jotta vielä voi löytää takaisin, löytää oman äänensä.  Anna Maria Mäki (s. 1976) on vapaa kirjoittaja ja suomen kielen maisteri. Mäen esikoisteos, novellikokoelma Suljetun paikan lumo (Teos, 2005) oli ehdokkaana Helsingin Sanomien kirjallisuuspalkinnon sekä Olvi-, Tiiliskivi- ja Runeberg-palkintojen saajaksi. Vuonna 2011 ilmestyi lyhytproosakokoelma Virginian vaatteet. Mäki on kirjoittanut myös lapsille. Hänen novellejaan on käännetty saksaksi ja unkariksi.</summary>
+    <simplified:pwid>64a43d34-4fd7-6f89-2b7c-835801af6704</simplified:pwid>
+    <dcterms:language>fi</dcterms:language>
+    <dcterms:publisher>Teos-kustantamo</dcterms:publisher>
+    <dcterms:issued>2023-01-01</dcterms:issued>
+    <id>urn:isbn:9789523635159</id>
+    <bibframe:distribution bibframe:ProviderName="ellibs"/>
+    <published>2026-03-03T00:00:00Z</published>
+    <updated>2026-09-04T00:22:39+00:00</updated>
+    <category scheme="http://librarysimplified.org/terms/fiction/" term="http://librarysimplified.org/terms/fiction/Fiction" label="Fiction"/>
+    <category scheme="http://librarysimplified.org/terms/genres/Simplified/" term="http://librarysimplified.org/terms/genres/Simplified/General%20Fiction" label="General Fiction"/>
+    <category scheme="http://schema.org/audience" term="Adult" label="Adult"/>
+    <author>
+        <name>Anna Maria Mäki</name>
+        <link href="http://localhost:6500/test-lib/works/contributor/Anna%20Maria%20M%C3%A4ki/fin/Adult,Adults+Only,All+Ages,Children,Young+Adult" rel="contributor" type="application/atom+xml;profile=opds-catalog;kind=acquisition" title="Anna Maria Mäki"/>
+    </author>
+    <contributor opf:role="nrt">
+        <name>Johanna Valle</name>
+    </contributor>
+    <link href="https://www.ellibslibrary.com/sites/default/files/imagecache/product_full/bookcover_9789523635159.jpg" rel="http://opds-spec.org/image" type="image/jpeg"/>
+    <link href="https://www.ellibslibrary.com/sites/default/files/imagecache/product/bookcover_9789523635159.jpg" rel="http://opds-spec.org/image/thumbnail" type="image/jpeg"/>
+    <link href="http://localhost:6500/test-lib/works/ISBN/9789523635159/borrow" rel="http://opds-spec.org/acquisition/borrow" type="application/atom+xml;type=entry;profile=opds-catalog">
+        <opds:indirectAcquisition type="application/vnd.readium.lcp.license.v1.0+json">
+            <opds:indirectAcquisition type="text/html;profile=&quot;http://librarysimplified.org/terms/profiles/streaming-media&quot;"/>
+        </opds:indirectAcquisition>
+        <opds:indirectAcquisition type="application/vnd.readium.lcp.license.v1.0+json">
+            <opds:indirectAcquisition type="application/audiobook+lcp"/>
+        </opds:indirectAcquisition>
+        <opds:availability status="available"/>
+        <opds:holds total="0"/>
+        <opds:copies total="5" available="5"/>
+    </link>
+    <link href="http://localhost:6500/test-lib/works/ISBN/9789523635159" rel="alternate" type="application/atom+xml;type=entry;profile=opds-catalog"/>
+    <link href="http://localhost:6500/test-lib/works/ISBN/9789523635159/related_books" rel="related" type="application/atom+xml;profile=opds-catalog;kind=acquisition" title="Recommended Works"/>
+    <link href="http://localhost:6500/test-lib/annotations/ISBN/9789523635159" rel="http://www.w3.org/ns/oa#annotationService" type="application/ld+json; profile=&quot;http://www.w3.org/ns/anno.jsonld&quot;"/>
+    <link href="http://localhost:6500/test-lib/analytics/ISBN/9789523635159/open_book" rel="http://librarysimplified.org/terms/rel/analytics/open-book"/>
+</entry>

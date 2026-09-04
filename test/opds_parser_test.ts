@@ -149,5 +149,49 @@ describe("OPDSParser", () => {
         }
       });
     });
+
+    it("parses example audiobook entry", (done) => {
+      fs.readFile("test/files/entry_audiobook.xml", "utf8", (error, data) => {
+        if (error) {
+          done(error);
+        } else {
+          let promise: Promise<OPDSFeed | OPDSEntry> = parser.parse(data);
+          promise.then((result: OPDSEntry) => {
+            expect(result).to.be.an.instanceof(OPDSEntry);
+            expect(result).not.to.be.an.instanceof(OPDSFeed);
+            expect(result.id).to.equals("urn:isbn:9789523635159");
+            expect(result.title).to.equals("Äänenkantama");
+            expect(result.updated).to.equals("2026-09-04T00:22:39+00:00");
+
+            expect(result.authors.length).to.equals(1);
+            expect(result.authors[0].name).to.equals("Anna Maria Mäki");
+            expect(result.publisher).to.equals("Teos-kustantamo");
+            expect(result.contributors.length).to.equals(1);
+            expect(result.contributors[0].name).to.equals("Johanna Valle");
+            expect(result.contributors[0].role).to.equals("nrt");
+
+            expect(result.links.length).to.equals(7);
+            expect(result.links[3]).to.be.an.instanceof(AlternateLink);
+            expect(result.links[2]).to.be.an.instanceof(OPDSAcquisitionLink);
+            expect((<OPDSAcquisitionLink>result.links[2]).indirectAcquisitions.length).to.equals(2);
+
+            expect(result.categories.length).to.equals(3);
+            expect(result.categories[0].scheme).to.equals("http://librarysimplified.org/terms/fiction/");
+            expect(result.categories[0].term).to.equals("http://librarysimplified.org/terms/fiction/Fiction");
+            expect(result.categories[0].label).to.equals("Fiction");
+            expect(result.categories[1].scheme).to.equals("http://librarysimplified.org/terms/genres/Simplified/");
+            expect(result.categories[1].term).to.equals("http://librarysimplified.org/terms/genres/Simplified/General%20Fiction");
+            expect(result.categories[1].label).to.equals("General Fiction");
+            expect(result.categories[2].scheme).to.equals("http://schema.org/audience");
+            expect(result.categories[2].term).to.equals("Adult");
+            expect(result.categories[2].label).to.equals("Adult");
+            expect(result.language).to.equals("fi");
+            expect(result.duration).to.equals(16166.0);
+
+          }).then(done, done);
+        }
+      });
+    });
+
   });
 });

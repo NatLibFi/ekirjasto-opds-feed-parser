@@ -58,6 +58,8 @@ export default class EntryParser extends Xml2jsOutputParser<OPDSEntry> {
     let rights = this.parseSubtagContent(entry, atomPrefix + "rights");
     let publisher = this.parseSubtagContent(entry, dcPrefix + "publisher");
     let published = this.parseSubtagContent(entry, atomPrefix + "published");
+    let durationValue = this.parseSubtagContent(entry, dcPrefix + "duration");
+    let duration = durationValue === undefined ? undefined : parseFloat(durationValue);
 
     let summaryLink;
     let summaryContent = this.parseSubtagContent(entry, atomPrefix + "content");
@@ -98,6 +100,7 @@ export default class EntryParser extends Xml2jsOutputParser<OPDSEntry> {
        rights,
        publisher,
        published,
+       duration,
        summary,
        unparsed: entry
     });

@@ -137,6 +137,19 @@ describe("EntryParser", () => {
       expect(parsedEntry.issued).to.equals("2016-01-01");
     });
 
+    it("extracts optional duration", () => {
+      let entry = {
+        "dc:duration": [{"_": "16166.5"}]
+      };
+      let parsedEntry = parser.parse(entry);
+      expect(parsedEntry.duration).to.equals(16166.5);
+    });
+
+    it("leaves duration undefined when absent", () => {
+      let parsedEntry = parser.parse({});
+      expect(parsedEntry.duration).to.be.undefined;
+    });
+
     it("extracts language", () => {
       let entry = {
         "dc:language": [{"_": "it"}]
